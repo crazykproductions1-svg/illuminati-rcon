@@ -21,6 +21,8 @@
 ![Platform](https://img.shields.io/badge/platform-Windows_10%2F11-0078D6?style=for-the-badge&logo=windows&logoColor=white)
 ![Obfuscation](https://img.shields.io/badge/obfuscation-PyArmor_8-red?style=for-the-badge)
 ![Build](https://img.shields.io/badge/packer-PyInstaller_OneFile-orange?style=for-the-badge)
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/vZQZ8w6zCg)
+
 
 [System Architecture](#-system-architecture--threading-model) • [Security & Auth Protocol](#-security--authentication-protocol) • [Complete API Specification](#-complete-api-specification) • [Local GUI & Controls](#-local-gui--cli-controls) • [Deployment Guide](#-standalone-exe-deployment-guide)
 
