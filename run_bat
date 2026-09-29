@@ -1,0 +1,59 @@
+@echo off
+setlocal enabledelayedexpansion
+title Illuminati RCON - Demo Setup Launcher
+
+echo ============================================================
+echo           ILLUMINATI RCON - DEMO AUTO-LAUNCHER               
+echo ============================================================
+echo.
+
+:: 1. Check if Python is installed
+python --version >nul 2>&1
+if %errorlevel% neq 0 (
+    echo [ERROR] Python is not installed or not added to your system PATH.
+    echo Please install Python 3.10+ from https://python.org
+    echo Make sure to check the box "Add Python to PATH" during installation.
+    echo.
+    pause
+    exit /b
+)
+
+:: 2. Setup Virtual Environment to keep the host system clean
+if not exist .venv (
+    echo [INFO] Creating an isolated Virtual Environment (.venv)...
+    python -m venv .venv
+    if !errorlevel! neq 0 (
+        echo [ERROR] Failed to create virtual environment.
+        pause
+        exit /b
+    )
+)
+
+:: 3. Activate the environment and install dependencies quietly
+echo [INFO] Activating virtual environment...
+call .venv\Scripts\activate
+
+echo [INFO] Verifying and installing required dependencies...
+python -m pip install --upgrade pip >nul 2>&1
+pip install fastapi uvicorn psutil customtkinter >nul 2>&1
+
+if %errorlevel% neq 0 (
+    echo [ERROR] Failed to install dependencies. Check your internet connection.
+    pause
+    exit /b
+)
+
+:: 4. Launch the application
+echo [SUCCESS] Everything is ready. Launching Illuminati RCON Demo...
+echo ------------------------------------------------------------
+echo.
+python main.py
+
+:: 5. Keep window open if the script crashes so they can read the error
+if %errorlevel% neq 0 (
+    echo.
+    echo [WARNING] Application closed with an unexpected exit code: %errorlevel%
+    pause
+)
+
+deactivate
